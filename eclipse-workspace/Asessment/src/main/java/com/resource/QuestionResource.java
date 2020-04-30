@@ -48,6 +48,7 @@ public class QuestionResource {
 		return(List<Question>) qRepo.findByDifficultyLevel(diffLevel);
 	}
 	
+	//EditQuestion
 	@PutMapping("questions/{id}")
 	public ResponseEntity<Object> editQuestion(@RequestBody Question question,@PathVariable int id){
 		
@@ -67,12 +68,10 @@ public class QuestionResource {
 		return ResponseEntity.created(location).build();
 		
 	}
+	//create Questions
 	@PostMapping("questions")
 	public ResponseEntity<Object> createQuestion(@RequestBody Question question){
-		
-		
-		
-		
+
 		Question createQuestion = qRepo.save(question);
 		
 		URI location =	ServletUriComponentsBuilder.fromCurrentRequest()
