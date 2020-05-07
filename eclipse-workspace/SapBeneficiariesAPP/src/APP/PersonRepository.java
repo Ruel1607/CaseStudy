@@ -11,6 +11,7 @@ public interface PersonRepository {
 	public List<Person> getQualifiedForSap();
 	public List<Person> getDenied();
 	public List<Person> getPending();
+	public String getStatusUpdate(int id, Person person);
 	
 	
 }

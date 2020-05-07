@@ -16,7 +16,7 @@ PersonRepository personRepo = new PersonRepositoryImpl();
 		person.setAge(28);
 		person.setSalary(55000);
 		person.setOccupation("Programmer");
-		person.setOtherNote("PABIGT SA LIPUNAN");
+		person.setOtherNote("DILAWAN");
 		person.setStatus("SINGLE");
 		
 	 personRepo.addPerson(person);

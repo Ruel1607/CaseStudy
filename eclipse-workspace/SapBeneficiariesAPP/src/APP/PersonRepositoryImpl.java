@@ -235,6 +235,33 @@ public class PersonRepositoryImpl implements PersonRepository{
 		
 		return personList;
 	}
+
+	@Override
+	public String getStatusUpdate(int id, Person person) {
+		Connection con = connectionPool.getConnection();
+		PreparedStatement preparedStatement = null;
+		try {
+			con.setAutoCommit(false );
+			String query = "Update person set status = ? WHERE id = ?;";
+			preparedStatement = con.prepareStatement(query);
+			
+			
+			preparedStatement.setString(1,  person.getStatus());
+			preparedStatement.setInt(2, id);
+			preparedStatement.executeUpdate(); 
+			con.commit(); 
+			preparedStatement.close();		
+			System.out.println("SUCCESS UPDATED ");
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}	finally {
+			connectionPool.closeConnection(con, preparedStatement);
+		}
+		
+		return "PERSON UPDATED SUCCESFULLY";
+	}
 	
 
 }
+
